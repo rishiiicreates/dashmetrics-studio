@@ -1,8 +1,8 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { AnimatedSection } from '@/components/AnimatedSection';
-import { LogOut, BarChart3, Users, Eye, TrendingUp, Youtube, Instagram, Twitter } from 'lucide-react';
-
+import { LogOut, BarChart3, Users, Eye, TrendingUp, Youtube, Instagram, Twitter, Settings } from 'lucide-react';
+import { Link } from 'react-router-dom';
 const stats = [
   { label: 'Total Views', value: '1.2M', change: '+12.5%', icon: Eye },
   { label: 'Subscribers', value: '48.2K', change: '+3.2%', icon: Users },
@@ -42,6 +42,12 @@ export default function Dashboard() {
             <span className="text-sm text-text-secondary hidden sm:block">
               {user?.email}
             </span>
+            <Link to="/settings">
+              <Button variant="ghost" size="sm">
+                <Settings className="w-4 h-4 mr-2" />
+                Settings
+              </Button>
+            </Link>
             <Button variant="ghost" size="sm" onClick={signOut}>
               <LogOut className="w-4 h-4 mr-2" />
               Sign out
