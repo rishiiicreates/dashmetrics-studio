@@ -1,6 +1,10 @@
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
 
 export function Header() {
+  const { user } = useAuth();
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
       <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
@@ -24,12 +28,20 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" className="text-text-secondary">
-            Sign in
-          </Button>
-          <Button variant="default" size="sm">
-            Get started
-          </Button>
+          {user ? (
+            <Button variant="default" size="sm" asChild>
+              <Link to="/dashboard">Dashboard</Link>
+            </Button>
+          ) : (
+            <>
+              <Button variant="ghost" size="sm" className="text-text-secondary" asChild>
+                <Link to="/auth">Sign in</Link>
+              </Button>
+              <Button variant="default" size="sm" asChild>
+                <Link to="/auth">Get started</Link>
+              </Button>
+            </>
+          )}
         </div>
       </nav>
     </header>
