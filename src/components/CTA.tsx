@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
@@ -16,9 +17,11 @@ export function CTA() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="hero" size="xl">
-              Get started free
-              <ArrowRight className="w-4 h-4 ml-1" />
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/auth">
+                Get started free
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Link>
             </Button>
           </div>
           

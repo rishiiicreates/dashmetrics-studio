@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
@@ -32,12 +33,14 @@ export function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in"
           style={{ animationDelay: '600ms' }}
         >
-          <Button variant="hero" size="xl">
-            Start for free
-            <ArrowRight className="w-4 h-4 ml-1" />
+          <Button variant="hero" size="xl" asChild>
+            <Link to="/auth">
+              Start for free
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
           </Button>
-          <Button variant="subtle" size="xl">
-            View demo
+          <Button variant="subtle" size="xl" asChild>
+            <a href="#features">View demo</a>
           </Button>
         </div>
       </div>
